@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Notes</title>
+</head>
+    <style>
+      .add_now_button {
+        border-radius: 50%; 
+        height: 20px; 
+        width: 100px; 
+        display: inline;
+      }
+      .input_area {
+        display: inline;
+        height: 20px;
+      }
+    </style>
+<body>
+
+<!-- INPUT -->
+<input class="input_area" type="text" name="myText" id="myText" placeholder="insert text here"></input>
+
+<!-- BUTTON -->
+<button class="add_now_button" id="addBtn" onclick="submitNotes()">Add now!</button>
+
+<!-- DISPLAY AREA -->
+<div id="textDisplay"></div>
+
+<script>
+  //0.) Store constants
+  let notesDisplay = document.getElementById("textDisplay");
+  let addButton = document.getElementById("addBtn");
+
+  //1.) Get and parse the note form the `myText` input area
+  function parseNotes() {
+    var noteValue = document.getElementById("myText").value;
+    return noteValue
+  }
+
+  //2.) Replace and display the note into the textDisplay area
+  function submitNotes() {
+    let randomStickColor = "#" + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6); //add ng `color` number na random
+    notesDisplay.innerHTML += `
+      <div style="background-color: ${randomStickColor}; width: 25%;">
+        <p  style="text-align: center; vetrical-align: middle; padding: 100px; ">
+          ${parseNotes()}
+        </p> 
+      </div>
+    `;
+  }
+
+</script>
+
+</body>
+</html>
+
+

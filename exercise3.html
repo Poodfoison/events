@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ 
+    </head>
+<body>
+    <div id="some_div"></div>
+
+
+<script>
+var timeLeft = 10;
+    var elem = document.getElementById('some_div');
+    
+    var timerId = setInterval(countdown, 1000);
+    
+    function countdown() {
+      if (timeLeft == -1) {
+
+        clearTimeout(timerId);
+
+        var x = document.createElement("IMG");
+        x.setAttribute("src", "https://media.timeout.com/images/105653190/image.jpg");
+        x.setAttribute("width", "25%");
+        x.setAttribute("height", "300");
+        document.body.appendChild(x);
+        window.scrollBy(0, 500);
+
+      } else {
+        elem.innerHTML += `
+      <div style="background-color: grey; width: 25%;">
+        <h2  style="text-align: center; vetrical-align: middle; padding: 100px; ">
+          ${timeLeft}
+        </h2> 
+      </div>
+    `;;
+        timeLeft--;
+        window.scrollBy(0, 500);
+      }
+    }
+</script>
+
+</body>
+</html>
